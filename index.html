@@ -1,23 +1,84 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>HTML5 Games</title>
-    <style>
-      body {
-        margin: 0;
-        background: #3498db;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minecraft scratch - HTML5 Games</title>
+  <style>
+    body {
+      margin: 0;
+      background: #3498db;
+      height: 100vh;
+      position: relative;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    img.logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px #000000aa;
+    }
+    button {
+      background: white;
+      color: #3498db;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #2980b9;
+      color: white;
+    }
+    p.fallback {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #eee;
+      max-width: 300px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <img class="logo" src="https://i.imgur.com/GSJbXh5.png" alt="Logo" />
+
+  <h1>Minecraft scratch</h1>
+
+  <button onclick="launchMinecraft()">Launch Minecraft scratch</button>
+
+  <p class="fallback">If the game doesn’t load, try opening the <a href="https://binbashbanana.github.io/gfiles/html5/minecraft/" target="_blank" rel="noopener" style="color: #eee; text-decoration: underline;">official game page</a> directly.</p>
+
+  <script>
+    async function launchMinecraft() {
+      const url = 'https://raw.githubusercontent.com/BinBashBanana/gfiles/master/gfiles/html5/minecraft/index.html';
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Failed to fetch game');
+        const html = await response.text();
+        const win = window.open('about:blank');
+        win.document.write(html);
+        win.document.close();
+      } catch (error) {
+        alert('Could not load the game: ' + error.message);
       }
-      img {
-        width: 180px;
-      }
-    </style>
-  </head>
-  <body>
-    <img src="https://i.imgur.com/GSJbXh5.png" alt="HTML5 Logo">
-  </body>
+    }
+  </script>
+
+</body>
 </html>
