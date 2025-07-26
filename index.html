@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Eaglercraft Launcher</title>
-<style>
-  body {
-    margin: 0;
-    background: #3498db;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-    position: relative;
-  }
-  img.logo {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 120px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.5);
-  }
-  h1 {
-    margin: 0;
-    font-weight: 700;
-    text-shadow: 1px 1px 2px #000000aa;
-    user-select: none;
-  }
-  button {
-    background: white;
-    color: #3498db;
-    border: none;
-    padding: 15px 50px;
-    font-size: 1.3em;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    width: 280px;
-    user-select: none;
-    transition: background 0.3s ease;
-  }
-  button:hover {
-    background: #2980b9;
-    color: white;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML5 Games Hub</title>
+  <style>
+    body {
+      margin: 0;
+      background: #3498db;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      position: relative;
+    }
+
+    img.logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px #000000aa;
+      user-select: none;
+    }
+
+    button {
+      background: white;
+      color: #3498db;
+      border: none;
+      padding: 15px 50px;
+      font-size: 1.2em;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      width: 280px;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #2980b9;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
   <img class="logo" src="https://i.imgur.com/GSJbXh5.png" alt="Logo" />
+  <h1>HTML5 Games for You!</h1>
 
-  <h1>Eaglercraft Versions</h1>
-
-  <button onclick="launchEaglercraft('https://eaglercraftonline.bitbucket.io/go/minecraft-1.8.8/')">
+  <button onclick="launchBlank('https://eaglercraftonline.bitbucket.io/go/minecraft-1.8.8/')">
     Minecraft 1.8.8
   </button>
 
-  <button onclick="launchEaglercraft('https://eaglercraftonline.bitbucket.io/go/minecraft-1.3/')">
+  <button onclick="launchBlank('https://eaglercraftonline.bitbucket.io/go/minecraft-1.3/')">
     Minecraft 1.3
   </button>
 
+  <button onclick="launchBlank('https://binbashbanana.github.io/gfiles/html5/chromedino/')">
+    Chrome Dino
+  </button>
+
   <script>
-    function launchEaglercraft(url) {
+    function launchBlank(url) {
       const win = window.open('about:blank');
       if (!win) {
         alert('Pop-up blocked! Please allow pop-ups for this site.');
@@ -77,7 +84,7 @@
         <!DOCTYPE html>
         <html style="margin:0; height:100%;">
           <head>
-            <title>Eaglercraft</title>
+            <title>Game</title>
             <style>
               html, body {
                 margin:0; height:100%; overflow:hidden;
