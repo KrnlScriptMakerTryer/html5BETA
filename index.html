@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HTML5 Games for You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTML5 Games Hub</title>
   <style>
     body {
       margin: 0;
       background: #3498db;
-      height: 100vh;
       font-family: Arial, sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
-      gap: 25px;
+      justify-content: center;
+      height: 100vh;
       position: relative;
+      gap: 20px;
+      padding: 20px;
     }
     img.logo {
       position: absolute;
@@ -24,27 +25,26 @@
       right: 20px;
       width: 120px;
       border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
     }
     h1 {
-      margin-top: 40px;
+      margin: 0;
       font-size: 2em;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px #00000088;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       user-select: none;
     }
     button {
       background: white;
       color: #3498db;
       border: none;
-      padding: 15px 50px;
+      padding: 15px 40px;
       font-size: 1.2em;
-      border-radius: 12px;
+      border-radius: 10px;
+      width: 260px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
       user-select: none;
-      transition: 0.3s;
-      width: 280px;
     }
     button:hover {
       background: #2980b9;
@@ -55,50 +55,40 @@
 <body>
 
   <img class="logo" src="https://i.imgur.com/GSJbXh5.png" alt="Logo" />
-  <h1>HTML5 Games for you!</h1>
+  <h1>HTML5 Games for You!</h1>
 
   <button onclick="launchBlank('https://eaglercraftonline.bitbucket.io/go/minecraft-1.8.8/')">
     Minecraft 1.8.8
   </button>
-
   <button onclick="launchBlank('https://eaglercraftonline.bitbucket.io/go/minecraft-1.3/')">
     Minecraft 1.3
   </button>
-
-  <button onclick="launchBlank('https://binbashbanana.github.io/gfiles/gfiles/html5/chromedino/')">
-    Chrome Dino
-  </button>
+  <button onclick="launchBlankDino()">Chrome Dino</button>
 
   <script>
     function launchBlank(url) {
       const win = window.open('about:blank');
-      if (!win) {
-        alert('Popup blocked! Please allow popups for this site.');
-        return;
-      }
+      if (!win) return alert('Pop‑ups blocked!');
       win.document.write(`
         <!DOCTYPE html>
-        <html>
-          <head>
-            <title>Game</title>
-            <style>
-              html, body {
-                margin: 0;
-                height: 100%;
-                overflow: hidden;
-              }
-              iframe {
-                width: 100vw;
-                height: 100vh;
-                border: none;
-              }
-            </style>
-          </head>
-          <body>
-            <iframe src="${url}" allowfullscreen></iframe>
-          </body>
-        </html>
+        <html style="margin:0;height:100%;">
+        <head><title>Game</title>
+        <style>html,body{margin:0;height:100%;overflow:hidden;}iframe{width:100vw;height:100vh;border:none;}</style>
+        </head><body>
+        <iframe src="${url}" allowfullscreen></iframe>
+        </body></html>
       `);
+      win.document.close();
+    }
+
+    async function launchBlankDino() {
+      // embed the lightweight Dino version
+      const dinoHtml = await fetch('https://codingwith-adam.github.io/dino-game/index.html')
+        .then(r=>r.text()).catch(e=>null);
+      if (!dinoHtml) return alert('Failed to load Dino.');
+      const win = window.open('about:blank');
+      if (!win) return alert('Pop‑ups blocked!');
+      win.document.write(dinoHtml);
       win.document.close();
     }
   </script>
