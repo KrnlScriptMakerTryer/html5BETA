@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Minecraft scratch - HTML5 Games</title>
+  <title>HTML5 Games</title>
   <style>
     body {
       margin: 0;
@@ -13,9 +13,11 @@
       font-family: Arial, sans-serif;
       color: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      gap: 25px;
+      padding: 20px;
     }
     img.logo {
       position: absolute;
@@ -26,31 +28,39 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.5);
     }
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       font-weight: 700;
       text-shadow: 1px 1px 2px #000000aa;
+      user-select: none;
     }
     button {
       background: white;
       color: #3498db;
       border: none;
-      padding: 15px 30px;
-      font-size: 1.2em;
+      padding: 15px 40px;
+      font-size: 1.3em;
       border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: background 0.3s ease;
+      width: 240px;
+      user-select: none;
     }
     button:hover {
       background: #2980b9;
       color: white;
     }
     p.fallback {
-      margin-top: 20px;
+      margin-top: 5px;
       font-size: 0.9em;
       color: #eee;
-      max-width: 300px;
+      max-width: 320px;
       text-align: center;
+      user-select: none;
+    }
+    a {
+      color: #eee;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -58,25 +68,41 @@
 
   <img class="logo" src="https://i.imgur.com/GSJbXh5.png" alt="Logo" />
 
-  <h1>Minecraft scratch</h1>
+  <h1>HTML5 Games</h1>
 
-  <button onclick="launchMinecraft()">Launch Minecraft scratch</button>
+  <button onclick="launchGame('minecraft')">Minecraft scratch</button>
+  <p class="fallback">
+    If the game doesn’t load, open <a href="https://binbashbanana.github.io/gfiles/html5/minecraft/" target="_blank" rel="noopener">Minecraft scratch</a> directly.
+  </p>
 
-  <p class="fallback">If the game doesn’t load, try opening the <a href="https://binbashbanana.github.io/gfiles/html5/minecraft/" target="_blank" rel="noopener" style="color: #eee; text-decoration: underline;">official game page</a> directly.</p>
+  <button onclick="launchGame('chromedino')">Chrome Dino</button>
+  <p class="fallback">
+    If the game doesn’t load, open <a href="https://binbashbanana.github.io/gfiles/html5/chromedino/" target="_blank" rel="noopener">Chrome Dino</a> directly.
+  </p>
+
+  <button onclick="launchSnake()">Google Snake</button>
+  <p class="fallback">
+    If the game doesn’t load, open <a href="snake/index.html" target="_blank" rel="noopener">Google Snake</a> directly.
+  </p>
 
   <script>
-    async function launchMinecraft() {
-      const url = 'https://raw.githubusercontent.com/BinBashBanana/gfiles/master/gfiles/html5/minecraft/index.html';
+    async function launchGame(gameName) {
+      const baseRaw = 'https://raw.githubusercontent.com/BinBashBanana/gfiles/master/gfiles/html5/';
+      const url = baseRaw + gameName + '/index.html';
       try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Failed to fetch game');
-        const html = await response.text();
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Failed to fetch game');
+        const html = await res.text();
         const win = window.open('about:blank');
         win.document.write(html);
         win.document.close();
-      } catch (error) {
-        alert('Could not load the game: ' + error.message);
+      } catch (err) {
+        alert('Could not load the game: ' + err.message);
       }
+    }
+
+    function launchSnake() {
+      window.open('snake/index.html', '_blank', 'noopener,noreferrer');
     }
   </script>
 
