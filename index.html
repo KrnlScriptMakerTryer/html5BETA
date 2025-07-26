@@ -80,11 +80,6 @@
     If the game doesn’t load, open <a href="https://binbashbanana.github.io/gfiles/html5/chromedino/" target="_blank" rel="noopener">Chrome Dino</a> directly.
   </p>
 
-  <button onclick="launchSnake()">Google Snake</button>
-  <p class="fallback">
-    If the game doesn’t load, open <a href="snake/index.html" target="_blank" rel="noopener">Google Snake</a> directly.
-  </p>
-
   <script>
     async function launchGame(gameName) {
       const baseRaw = 'https://raw.githubusercontent.com/BinBashBanana/gfiles/master/gfiles/html5/';
@@ -99,10 +94,6 @@
       } catch (err) {
         alert('Could not load the game: ' + err.message);
       }
-    }
-
-    function launchSnake() {
-      window.open('snake/index.html', '_blank', 'noopener,noreferrer');
     }
   </script>
 
